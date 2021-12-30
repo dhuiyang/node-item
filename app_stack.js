@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 3001
-const StackBaseLinkList = require('./data-structures/stack');
+const StackBaseLinkedList = require('./data-structures/stack');
 const SampleBrowser = require('./data-structures/stack.test');
 
 function creatStack() {
-  const newStack = new StackBaseLinkList;
+  const newStack = new StackBaseLinkedList;
   console.log('newStack: ', newStack);
   newStack.push(1);
   newStack.push(2);

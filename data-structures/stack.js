@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class StackBaseLinkList {
+class StackBaseLinkedList {
   constructor() {
     // 栈顶元素
     this.top = null;
@@ -45,4 +45,4 @@ class StackBaseLinkList {
   }
 }
 
-  module.exports = StackBaseLinkList;
+  module.exports = StackBaseLinkedList;
