@@ -82,6 +82,67 @@ class LinkedList {
       currentNode = currentNode.next;
     }
   }
+
+  // 反转单链表
+  reverseList() {
+    const root = new Node('head')
+    let currentNode = this.head.next;
+    while (currentNode !== null) {
+      const next = currentNode.next;
+      currentNode.next = root.next;
+      root.next = currentNode;
+      currentNode = next;
+    }
+    this.head = root;
+  }
+
+  // 环验证
+  checkCircle() {
+    let fast = this.head.next;
+    let slow = this.head;
+    while(fast !== null && fast.next !== null) {
+      fast = fast.next.next;
+      slow = slow.next;
+      if(slow === fast) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // 删除倒数第k个节点
+  removeByIndexFromEnd(index) {
+    //务必先判断是否是 环链表
+    if (this.checkCircle()) return false;
+    let pos = 1;
+    // 先反转链表
+    this.reverseList();
+    let currentNode = this.head.next;
+    while (currentNode !== null && pos < index) {
+      currentNode = currentNode.next;
+      pos++;
+    }
+    if (currentNode === null) {
+      console.log('无法删除最后一个节点或者该节点不存在')
+      return false;
+    }
+    this.remove(currentNode.element);
+    // 链表反转回来
+    this.reverseList()
+  }
+
+  // 求中间节点
+  findMiddleNode() {
+    // 快慢指针同一个起点，快指针走完刚好慢指针走到一半
+    let fast = this.head;
+    let slow = this.head;
+    while (fast.next !== null && fast.next.next !== null) {
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+    console.log(slow);
+    return slow;
+  }
 }
 
 module.exports = LinkedList;
